@@ -37,16 +37,12 @@ src/
   utils/        sessionStorage.js, format.js
 ```
 
-## Resume bullets (copy and adapt)
-
 **Atlas: Country Explorer** | React, Redux Toolkit, Axios, Vite
 - Built a responsive country search app with Redux Toolkit (slices, async thunks, memoized selectors) managing API data, filters and favorites.
 - Designed an Axios layer with timeouts, retry with exponential backoff and normalized error messages, surfaced through error boundaries and retry flows.
 - Implemented validated, versioned sessionStorage persistence plus a 15-minute response cache, cutting repeat network calls to zero within a session.
 - Improved rendering performance with memoized components and selectors, debounced search, paginated rendering and code-split modals.
 - Delivered WCAG-minded accessibility: keyboard navigation, native modal dialog, ARIA live regions, visible focus states and a reduced-motion-aware light/dark UI.
-
-## Interview talking points
 
 - **Why Redux Toolkit?** It removes boilerplate (Immer, `createSlice`, thunks) while keeping the classic action, reducer and store model.
 - **Why local state for the search box?** Typing stays instant; Redux and the filtering only update after a 250ms debounce.
