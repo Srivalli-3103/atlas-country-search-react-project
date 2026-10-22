@@ -10,6 +10,7 @@ import { selectError, selectSelectedCountry, selectSource, selectStatus, selectT
 import { closeCountry } from './store/actions';
 import { loadCountries } from './services/countriesService';
 
+// Code-splitting: the modal is only downloaded the first time someone opens a country.
 const CountryModal = lazy(() => import('./components/CountryModal'));
 
 export default function App() {
@@ -61,7 +62,7 @@ export default function App() {
 
       <footer className="footer">
         <p>
-          Data from REST Countries
+          Data from API Countries
           {source === 'cache' ? ', loaded from this tab’s session cache.' : '.'}
         </p>
       </footer>

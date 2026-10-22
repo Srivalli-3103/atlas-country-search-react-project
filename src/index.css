@@ -308,7 +308,7 @@ main:focus {
 .card[data-region='Asia'] { --region: #b3261e; }
 .card[data-region='Europe'] { --region: #2456c9; }
 .card[data-region='Oceania'] { --region: #7b3fb5; }
-.card[data-region='Antarctic'] { --region: #4a8fa8; }
+.card[data-region='Polar'] { --region: #4a8fa8; }
 
 .card__flag {
   aspect-ratio: 3 / 2;

@@ -64,7 +64,7 @@ export default function CountryModal({ country }) {
         <h2 id="modal-title" className="modal__title">
           {country.name}
         </h2>
-        {country.officialName && <p className="modal__official">{country.officialName}</p>}
+        {country.nativeName && <p className="modal__official">{country.nativeName}</p>}
 
         <dl className="modal__details">
           {details.map(([label, value]) => (

@@ -13,6 +13,7 @@ export default class ErrorBoundary extends Component {
   }
 
   componentDidCatch(error, info) {
+    // In production, send this to your error tracker (Sentry, Datadog...).
     console.error('ErrorBoundary caught:', error, info.componentStack);
   }
 

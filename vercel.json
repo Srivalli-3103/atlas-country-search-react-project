@@ -1,0 +1,3 @@
+{
+  "rewrites": [{ "source": "/countries-api/:path*", "destination": "https://countries.dev/:path*" }]
+}

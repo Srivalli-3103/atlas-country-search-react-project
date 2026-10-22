@@ -4,7 +4,11 @@ const MAX_RETRIES = 2;
 const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 export const http = axios.create({
-  baseURL: 'https://restcountries.com/v3.1',
+  // REST Countries v1-v4 were shut down and v5 needs an API key, so this app uses the free, keyless API Countries.
+  // Requests go to our own origin (/countries-api) and are forwarded to the API by a proxy:
+  //   dev: vite.config.js   |   Vercel: vercel.json   |   Netlify: public/_redirects
+  // That avoids browser CORS problems entirely. Override with VITE_COUNTRIES_API_URL if you host your own proxy.
+  baseURL: import.meta.env.VITE_COUNTRIES_API_URL ?? '/countries-api',
   timeout: 10_000,
   headers: { Accept: 'application/json' },
 });
@@ -21,6 +25,11 @@ export function toUserMessage(error) {
   return `The countries service rejected the request (error ${status}).`;
 }
 
+/**
+ * Response interceptor:
+ *  1. Retries idempotent GET requests on network errors and 5xx with exponential backoff.
+ *  2. Attaches a friendly `userMessage` so UI code never parses Axios internals.
+ */
 http.interceptors.response.use(undefined, async (error) => {
   const config = error.config;
   const retriable =

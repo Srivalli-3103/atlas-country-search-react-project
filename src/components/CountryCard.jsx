@@ -11,7 +11,7 @@ function StarIcon({ filled }) {
         strokeWidth="1.8"
         strokeLinejoin="round"
       />
-    </svg> 
+    </svg>
   );
 }
 
